@@ -1,0 +1,813 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Dashboard - Espérance de Vie{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <h2>Selezionare una o più regioni (continenti)</h2>
+      <br></br>
+      <select id="regionSelect" multiple></select>
+        <br />
+      <div class="col-md-12 chart-container">
+        <h1>📊 Stacked Bar(Small Multiples per continent and sex)</h1>
+        <h4>
+            grafico a barre impilate con piccoli multipli (mini-grafici per regione). Qui Ogni regione ha un profilo unico, e questo permette un confronto visivo delle diverse traiettorie. Si nota subito che le donne vivono più a lungo degli uomini in tutte le regioni.
+            Inoltre, selezionando dal filtro l’Africa e il Sud-est asiatico ci rendiamo conto che hanno entrambi una struttura simile: forte disparità interna.</h4>
+        <div id="small-multiples"></div>
+      </div>
+      <div class="col-md-12 chart-container">
+        <h1>📊 Multiple Linechart by region and year</h1>
+        <h4>Questo grafico rappresenta dati collegando i punti con una linea.
+            È usato soprattutto per dati temporali o sequenziali, perché mostra bene trend ed evoluzioni. La linea unisce i punti per facilitare la percezione di un andamento.</h4>
+        <!--<button id="resetBtn">🔄 Réinitialiser</button>-->
+        <label>linechart par region</label>
+        <!-- <select id="regionSelect" multiple></select> -->
+        <svg id="lineChart" width="800" height="500"></svg>
+      </div>
+      <div class="col-md-12 chart-container">
+          <h1>📊 Grouped Bar Chart by region and year</h1>
+          <h4>
+              è una paronama globale che confronta l'aspettativa di vita media per regione. Si nota che l 'Africa si colloca in fondo alla classifica, ma con un trend in miglioramento. Una possibile domanda sarebbe: perché questo divario persiste?</h4>
+          <svg id="chart1" width="960" height="600"></svg>
+      </div>
+      <div class="col-md-12 chart-container">
+          <h1>📊 Heatmap graph by region and year</h1>
+          <h4>Mostra evoluzione dell'aspettativa di vita media nelle diverse regioni nel tempo ovvero è una visualizzazione che rappresenta i valori con una scala di colori invece che con l’altezza di barre o la lunghezza di linee. Nel nostro caso il Colore della cella = intensità del valore (aspettativa di vita) quindi più il colore è scuro o intenso, maggiore è il valore.</h4>
+          <div id="heatmapContainer"></div>
+      </div>
+        <h1>📊 Network graph by region and countries</h1>
+        <h4>In genere il grafico consente di mostrare i legami che possono esistere tra piu elementi in particolare per il nostro progetto consente di mettere in evidenza legami tra paesi  presenti nel file e continenti ai quali appartengono ovvero raggruppa i paesi per nome in base alle rispettive regioni</h4>
+      <div id="network" style="Background-color: aqua;"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 chart-container">
+        <h1>🗺️ World map (choroplèthe)</h1>
+        <h4>Visualizzazione spaziale delle differenze di aspettativa di vita media tra i paesi in un determinato continente: Abbiamo quindi una mappa interattiva con l'Africa al centro, per visualizzare tali differenze. Partie colorati in bianco indicano che i dati sono inesistenti.
+Dato che l'Africa non è omogenea, esistono sacche di progresso accanto ad aree fragili e alcuni paesi africani (ad esempio Marocco, Tunisia, Sudafrica, Algeria, Senegal, Ruanda, Etiopia) stanno progredendo rapidamente, mentre altri si attestano intorno ai 50 (Repubblica Centrafricana, Camerun, Repubblica Democratica del Congo</h4>
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <!-- Footer Résumé -->
+    <div class="chart-container text-center">
+      <h1>📈 Conclusione</h1>
+      <h4 id="summary">
+          Insomma l’Africa sta facendo progressi, ma rimane indietro rispetto al resto del mondo.
+Per comprendere ciò, rispondendo allo stesso modo alla domanda di perché persiste il divario? ci basiamo sul fatto che oltre alla povertà, alcuni paesi sono frequentemente colpiti da epidemie (HIV, malaria, COVID-19 etc..) o conflitti (guerre, terrorismo, ribellione) , di conseguenza, vedono la loro aspettativa di vita significativamente ridotta.
+Il fattore genere accentua ulteriormente queste differenze. (Dato che le donne hanno un'aspettativa di vita costantemente superiore a quella degli uomini, con una differenza da 3 a 5 volte superiore come visto nel grafico del stacked with small multiple). L'Africa rimane al centro delle principali sfide per la salute pubblica.
+
+L’interesse del progetto è stato quello di dimostrare che la visualizzazione dei dati rende una realtà complessa più comprensibile.
+Può anche consentire a un decisore non esperto di capire immediatamente dove agire e a un utente non esperto di conoscere attraverso i grafici l’aspettativa di vita media per ciascun continente
+
+Prospettive - Progetto futuro
+- Ampliare il confronto con altri indicatori integrando più variabili (reddito, istruzione, infrastrutture mediche).
+- Rendere la piattaforma interattiva impostando un filtro che dà la possibilità di scegliere una regione, un paese, un periodo di tempo generando il grafico adeguato.
+      </h4>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const fullData1 = {{ all_data|safe }};
+
+        const sexData = {{ sex_data|safe }};
+
+        // Log des données pour vérifier
+        console.log(sexData);
+
+        // Récupérer les données des régions et des pays depuis Django
+        const regionsData = {{ regions_data|safe }};
+
+        // ✅ Fonction pour vérifier toutes les sélections
+        function allSelectionsValid() {
+            return (
+                selectRegion.value && selectRegion.value !== "Choisir une région" &&
+                getSelectedCountries().length > 0 &&
+                selectSex.value &&
+                selectApp.value && selectApp.value !== "Choisir une app"
+            );
+        }
+
+        // =======================
+        // 🔹 Données fictives Carte
+        const dati_per_map = {{ data_map|safe }};
+
+        function drawWorldMap(data, containerId, config = {}) {
+            const width = config.width || 960;
+            const height = config.height || 500;
+            const container = d3.select(`#${containerId}`);
+
+            // Nettoyer avant de redessiner
+            container.select("svg").remove();
+
+            const svg = container.append("svg")
+              .attr("width", width)
+              .attr("height", height);
+
+            const projection = d3.geoMercator()
+              .scale(150)
+              .translate([width / 2, height / 1.5]);
+
+            const path = d3.geoPath().projection(projection);
+
+            // Associer valeur -> pays
+            const valueById = {};
+            data.forEach(d => { valueById[d.code] = d.value; });
+
+            const color = d3.scaleSequential(d3.interpolateViridis)
+              .domain(d3.extent(data, d => d.value));
+
+            // Charger la carte
+            d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
+              .then(world => {
+                svg.selectAll("path")
+                  .data(world.features)
+                  .enter().append("path")
+                    .attr("d", path)
+                    .attr("class", "country")
+                    .attr("fill", d => {
+                      const val = valueById[d.id];
+                      return val ? color(val) : "#eee";
+                    })
+                    .on("mouseover", function(event, d) {
+                      d3.select(this).attr("stroke", "black").attr("stroke-width", 1.5);
+                    })
+                    .on("mouseout", function(event, d) {
+                      d3.select(this).attr("stroke", "none");
+                    })
+                    .append("title")
+                      .text(d => `${d.properties.name}: ${valueById[d.id] || "n/a"}`);
+            });
+        }
+
+        drawWorldMap(dati_per_map, "map");
+
+        // =======================
+        // 🔹 Graphique en Barres groupées
+        // =======================
+
+        // =======================
+        // 🔹 Réseau
+        // =======================
+        function drawNetworkGraph(containerId, nodes, links) {
+          const width = 2800, height = 1400;
+          // 🧹 Nettoyer le container avant de dessiner
+          d3.select(containerId).selectAll("*").remove();
+
+          const svg = d3.select(containerId).append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+          // Tooltip (SVG + D3)
+          const tooltip = svg.append("g")
+            .style("pointer-events", "none")
+            .style("display", "none");
+
+          const tooltipBox = tooltip.append("rect")
+            .attr("fill", "#f9f9f9")
+            .attr("stroke", "#ccc")
+            .attr("stroke-width", 1)
+            .attr("rx", 4)
+            .attr("ry", 4);
+
+          const tooltipText = tooltip.append("text")
+            .attr("font-size", 12)
+            .attr("fill", "#000")
+            .attr("x", 5)
+            .attr("y", 15);
+
+          // Simulation
+          const simulation = d3.forceSimulation(nodes)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(200))
+            .force("charge", d3.forceManyBody().strength(-20))
+            .force("center", d3.forceCenter(width / 4, height * 0.5));
+
+          // Liens
+          const link = svg.append("g")
+            .attr("stroke", "#aaa")
+            .attr("stroke-width", 2)
+            .selectAll("line")
+            .data(links)
+            .enter().append("line");
+
+          // Noeuds
+          const node = svg.append("g")
+            .selectAll("circle")
+            .data(nodes)
+            .enter().append("circle")
+              .attr("r", 8)
+              .attr("fill", d => d.type === "continent" ? "orange" : "steelblue")
+              .on("mouseover", (event, d) => {
+                tooltip.style("display", null);
+                tooltipText.text(`${d.id} (${d.type})`);
+                const textSize = tooltipText.node().getBBox();
+                tooltipBox
+                  .attr("width", textSize.width + 10)
+                  .attr("height", textSize.height + 8);
+              })
+              .on("mousemove", (event) => {
+                tooltip.attr("transform", `translate(${event.offsetX + 10},${event.offsetY - 20})`);
+              })
+              .on("mouseout", () => {
+                tooltip.style("display", "none");
+              })
+              .call(d3.drag()
+                .on("start", event => {
+                  if (!event.active) simulation.alphaTarget(0.3).restart();
+                  event.subject.fx = event.subject.x;
+                  event.subject.fy = event.subject.y;
+                })
+                .on("drag", event => {
+                  event.subject.fx = event.x;
+                  event.subject.fy = event.y;
+                })
+                .on("end", event => {
+                  if (!event.active) simulation.alphaTarget(0);
+                  event.subject.fx = null;
+                  event.subject.fy = null;
+                }));
+
+          // Labels
+          const label = svg.append("g")
+            .selectAll("text")
+            .data(nodes)
+            .enter().append("text")
+              .text(d => d.id)
+              .attr("font-size", 12)
+              .attr("dy", -10);
+
+          // Tick
+          simulation.on("tick", () => {
+            link
+              .attr("x1", d => d.source.x)
+              .attr("y1", d => d.source.y)
+              .attr("x2", d => d.target.x)
+              .attr("y2", d => d.target.y);
+
+            node
+              .attr("cx", d => d.x)
+              .attr("cy", d => d.y);
+
+            label
+              .attr("x", d => d.x)
+              .attr("y", d => d.y);
+          });
+
+          // Légende
+          const legend = svg.append("g").attr("transform", "translate(20,20)");
+          const legendData = [
+            {label:"Continent", color:"orange"},
+            {label:"Pays", color:"steelblue"}
+          ];
+
+          legend.selectAll("rect")
+            .data(legendData)
+            .enter().append("rect")
+              .attr("x", 0).attr("y", (d,i) => i*20)
+              .attr("width", 12).attr("height", 12)
+              .attr("fill", d => d.color);
+
+          legend.selectAll("text")
+            .data(legendData)
+            .enter().append("text")
+              .attr("x", 20).attr("y", (d,i) => i*20 + 10)
+              .text(d => d.label)
+              .attr("font-size", 12);
+        }
+
+
+        const nodes = {{ nodes|safe }};
+        const links = {{ links|safe }};
+        drawNetworkGraph("#network", nodes, links);
+
+
+    // Extraire les régions uniques
+    const regions = [...new Set(fullData1.map(d => d.region))].sort();
+
+    const selectElement = document.getElementById("regionSelect");
+    regions.forEach(region => {
+        const option = document.createElement("option");
+        option.value = region;
+        option.text = region;
+        selectElement.appendChild(option);
+    });
+
+    function getSelectedRegions() {
+      const selectElement = document.getElementById("regionSelect");
+      const selected = Array.from(selectElement.selectedOptions).map(opt => opt.value);
+      return selected;
+    }
+
+    // Exemple d'utilisation :
+    const selectedRegions = getSelectedRegions();
+
+    function drawMultiLineChart(data, containerId, regions) {
+      // Filtrer uniquement les régions demandées
+      const filteredData = data.filter(d => regions.includes(d.region));
+
+      // Dimensions
+      const margin = { top: 40, right: 120, bottom: 60, left: 60 },
+            width = 800 - margin.left - margin.right,
+            height = 450 - margin.top - margin.bottom;
+
+      // Supprimer tout graphique existantSSSS
+      d3.select(`#${containerId}`).selectAll("*").remove();
+
+      // Créer le SVG
+      const svg = d3.select(`#${containerId}`)
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // Échelles
+      const x = d3.scaleLinear()
+        .domain(d3.extent(filteredData, d => d.year))
+        .range([0, width]);
+
+      const y = d3.scaleLinear()
+        .domain([
+          d3.min(filteredData, d => d.value) * 0.98,
+          d3.max(filteredData, d => d.value) * 1.02
+        ])
+        .range([height, 0]);
+
+      // Couleur par région
+      const color = d3.scaleOrdinal()
+        .domain(regions)
+        .range(d3.schemeCategory10);
+
+      // Axes
+      svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+
+      svg.append("g")
+        .call(d3.axisLeft(y));
+
+      // Ligne génératrice
+      const line = d3.line()
+        .x(d => x(d.year))
+        .y(d => y(d.value));
+
+      // Grouper par région
+      const dataByRegion = d3.group(filteredData, d => d.region);
+
+      // Tracer chaque ligne
+      dataByRegion.forEach((values, region) => {
+        svg.append("path")
+          .datum(values)
+          .attr("fill", "none")
+          .attr("stroke", color(region))
+          .attr("stroke-width", 2)
+          .attr("d", line);
+
+        // Points interactifs
+        svg.selectAll(`.dot-${region}`)
+          .data(values)
+          .enter()
+          .append("circle")
+          .attr("class", `dot-${region}`)
+          .attr("cx", d => x(d.year))
+          .attr("cy", d => y(d.value))
+          .attr("r", 4)
+          .attr("fill", color(region))
+          .on("mouseover", function (event, d) {
+            tooltip.transition().duration(200).style("opacity", 0.9);
+            tooltip.html(
+              `<strong>${d.region}</strong><br>Year: ${d.year}<br>Value: ${d.value.toFixed(2)}`
+            )
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+          })
+          .on("mouseout", () => tooltip.transition().duration(500).style("opacity", 0));
+      });
+
+      // Tooltip global
+      const tooltip = d3.select("body")
+        .append("div")
+        .style("position", "absolute")
+        .style("background", "#fff")
+        .style("border", "1px solid #ccc")
+        .style("padding", "8px")
+        .style("border-radius", "4px")
+        .style("pointer-events", "none")
+        .style("opacity", 0);
+
+      // ✅ Légende
+      const legend = svg.append("g")
+        .attr("transform", `translate(${width + 20}, 20)`);
+
+      regions.forEach((region, i) => {
+        const g = legend.append("g")
+          .attr("transform", `translate(0, ${i * 25})`);
+
+        g.append("rect")
+          .attr("width", 15)
+          .attr("height", 15)
+          .attr("fill", color(region));
+
+        g.append("text")
+          .attr("x", 20)
+          .attr("y", 12)
+          .style("font-size", "12px")
+          .text(region);
+      });
+
+      // ✅ Titre
+      svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -10)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("font-weight", "bold")
+        .text("Life expectancy at birth by region and year");
+    }
+
+    drawMultiLineChart(fullData1, 'lineChart', regions);
+
+    selectElement.addEventListener("change", (e) => {
+        const selectedRegions = getSelectedRegions(); // ✅ recalculer au changement
+
+        const filteredLinks = links.filter(l => {
+          const sourceId = typeof l.source === "string" ? l.source : l.source.id;
+          return selectedRegions.includes(sourceId);
+        });
+
+        const countryIds = filteredLinks.map(l => {
+          return typeof l.target === "string" ? l.target : l.target.id;
+        });
+
+        const filteredNodes = nodes.filter(n =>
+          selectedRegions.includes(n.id) || countryIds.includes(n.id)
+        );
+
+        drawMultiLineChart(fullData1, 'lineChart', selectedRegions);
+        createGroupedBarChart1(fullData1, "chart1", selectedRegions);
+        drawHeatmap1(fullData1, "heatmapContainer", selectedRegions);
+        drawSmallMultiplesGrouped(myData12, "small-multiples", selectedRegions);
+        drawNetworkGraph("#network", filteredNodes, filteredLinks);
+    });
+
+    function createGroupedBarChart1(fullData, elementId, selectedRegions) {
+      // === Nettoyage de l'ancien graphique et du tooltip ===
+      d3.select(`#${elementId}`).selectAll("*").remove();
+      d3.select("#tooltip").remove(); // Supprimer le tooltip existant s’il y en a un
+
+      const svg = d3.select(`#${elementId}`);
+      const margin = { top: 40, right: 160, bottom: 100, left: 60 };
+      const width = +svg.attr("width") - margin.left - margin.right;
+      const height = +svg.attr("height") - margin.top - margin.bottom;
+
+      const chart = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // === Créer le tooltip (div HTML) ===
+      const tooltip = d3.select("body")
+        .append("div")
+        .attr("id", "tooltip")
+        .style("position", "absolute")
+        .style("opacity", 0)
+        .style("background", "white")
+        .style("border", "1px solid #ccc")
+        .style("padding", "6px")
+        .style("border-radius", "4px")
+        .style("pointer-events", "none")
+        .style("font-size", "12px")
+        .style("box-shadow", "0 0 5px rgba(0,0,0,0.2)");
+
+      // === Filtrer les données si des régions sont sélectionnées ===
+      const filteredData = fullData.filter(d => selectedRegions.includes(d.region));
+      const years = Array.from(new Set(filteredData.map(d => d.year))).sort((a, b) => a - b);
+      const regions = selectedRegions;
+
+      // === Regrouper les données par année ===
+      const dataGrouped = years.map(year => {
+        const yearData = { year };
+        regions.forEach(region => {
+          const entry = filteredData.find(d => d.year === year && d.region === region);
+          yearData[region] = entry ? entry.value : 0;
+        });
+        return yearData;
+      });
+
+      // === Scales ===
+      const x0 = d3.scaleBand()
+        .domain(years)
+        .range([0, width])
+        .paddingInner(0.1);
+
+      const x1 = d3.scaleBand()
+        .domain(regions)
+        .range([0, x0.bandwidth()])
+        .padding(0.05);
+
+      const y = d3.scaleLinear()
+        .domain([0, d3.max(filteredData, d => d.value)])
+        .nice()
+        .range([height, 0]);
+
+      const color = d3.scaleOrdinal()
+        .domain(regions)
+        .range(d3.schemeTableau10);
+
+      // === Axes ===
+      chart.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(x0).tickFormat(d3.format("d")))
+        .selectAll("text")
+        .attr("transform", "rotate(-45)")
+        .style("text-anchor", "end");
+
+      chart.append("g")
+        .call(d3.axisLeft(y));
+
+      // === Barres ===
+      chart.selectAll("g.year-group")
+        .data(dataGrouped)
+        .enter()
+        .append("g")
+        .attr("class", "year-group")
+        .attr("transform", d => `translate(${x0(d.year)}, 0)`)
+        .selectAll("rect")
+        .data(d => regions.map(region => ({
+          region,
+          value: d[region],
+          year: d.year
+        })))
+        .enter()
+        .append("rect")
+        .attr("x", d => x1(d.region))
+        .attr("y", d => y(d.value))
+        .attr("width", x1.bandwidth())
+        .attr("height", d => height - y(d.value))
+        .attr("fill", d => color(d.region))
+        // === Tooltip events ===
+        .on("mouseover", function (event, d) {
+          tooltip.transition()
+            .duration(200)
+            .style("opacity", 0.9);
+          tooltip.html(`<strong>${d.region}</strong><br/>Année: ${d.year}<br/>Valeur: ${d.value}`)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mousemove", function (event) {
+          tooltip.style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function () {
+          tooltip.transition()
+            .duration(300)
+            .style("opacity", 0);
+        });
+
+      // === Légende ===
+      const legend = svg.append("g")
+        .attr("transform", `translate(${width + margin.left + 10}, ${margin.top})`);
+
+      regions.forEach((region, i) => {
+        const legendRow = legend.append("g")
+          .attr("transform", `translate(0, ${i * 20})`);
+
+        legendRow.append("rect")
+          .attr("width", 12)
+          .attr("height", 12)
+          .attr("fill", color(region));
+
+        legendRow.append("text")
+          .attr("x", 18)
+          .attr("y", 10)
+          .text(region);
+      });
+    }
+
+    createGroupedBarChart1(fullData1, "chart1", regions)
+
+    function drawHeatmap1(data, containerId, selectedRegions = null) {
+      // Structure attendue: [{year: 2000, region: "Africa", value: 34.6}, ...]
+
+      const margin = { top: 80, right: 30, bottom: 60, left: 120 },
+            width = 900 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+      // Nettoyer le container
+      d3.select(`#${containerId}`).selectAll("*").remove();
+
+      const svg = d3.select(`#${containerId}`)
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // 🔽 Appliquer un filtre si des régions sont spécifiées
+      const filteredData = selectedRegions
+        ? data.filter(d => selectedRegions.includes(d.region))
+        : data;
+
+      const years = Array.from(new Set(filteredData.map(d => d.year))).sort((a, b) => a - b);
+      const regions = Array.from(new Set(filteredData.map(d => d.region)));
+
+      const x = d3.scaleBand().domain(years).range([0, width]).padding(0.05);
+      const y = d3.scaleBand().domain(regions).range([0, height]).padding(0.05);
+
+      const color = d3.scaleSequential(d3.interpolateYlGnBu)
+        .domain([d3.min(filteredData, d => +d.value), d3.max(filteredData, d => +d.value)]);
+
+      // Tooltip
+      const tooltip = d3.select("body")
+        .append("div")
+        .style("position", "absolute")
+        .style("background", "white")
+        .style("border", "1px solid #ccc")
+        .style("padding", "8px")
+        .style("border-radius", "4px")
+        .style("font-size", "12px")
+        .style("pointer-events", "none")
+        .style("opacity", 0);
+
+      // Rectangles de la heatmap
+      svg.selectAll()
+        .data(filteredData, d => d.region + ':' + d.year)
+        .enter().append("rect")
+          .attr("x", d => x(d.year))
+          .attr("y", d => y(d.region))
+          .attr("width", x.bandwidth())
+          .attr("height", y.bandwidth())
+          .style("fill", d => color(d.value))
+          .on("mouseover", function(event, d) {
+            tooltip.transition().duration(200).style("opacity", 1);
+            tooltip.html(
+              `<strong>Région:</strong> ${d.region}<br/>
+               <strong>Année:</strong> ${d.year}<br/>
+               <strong>Valeur:</strong> ${d.value.toFixed(2)}`
+            )
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+            d3.select(this).style("stroke", "#333").style("stroke-width", 2);
+          })
+          .on("mousemove", function(event) {
+            tooltip.style("left", (event.pageX + 10) + "px")
+                   .style("top", (event.pageY - 28) + "px");
+          })
+          .on("mouseout", function() {
+            tooltip.transition().duration(200).style("opacity", 0);
+            d3.select(this).style("stroke", "none");
+          });
+
+      // Axe X
+      svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x).tickValues(years.filter((d, i) => !(i % 5))));
+
+      // Axe Y
+      svg.append("g").call(d3.axisLeft(y));
+
+      // Titre
+      svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -40)
+        .attr("text-anchor", "middle")
+        .style("font-size", "20px")
+        .style("font-weight", "bold")
+        .text("Life expectancy at birth by region and year");
+
+      // ✅ Légende
+      const legendWidth = 300, legendHeight = 15;
+      const legendSvg = svg.append("g")
+        .attr("transform", `translate(${width / 2 - legendWidth / 2}, ${height + 40})`);
+
+      const legendScale = d3.scaleLinear()
+        .domain(color.domain())
+        .range([0, legendWidth]);
+
+      const legendAxis = d3.axisBottom(legendScale).ticks(5);
+
+      const defs = svg.append("defs");
+      const linearGradient = defs.append("linearGradient")
+        .attr("id", "linear-gradient");
+
+      linearGradient.selectAll("stop")
+        .data(color.ticks().map((t, i, n) => ({
+          offset: `${100 * i / (n.length - 1)}%`,
+          color: color(t)
+        })))
+        .enter().append("stop")
+          .attr("offset", d => d.offset)
+          .attr("stop-color", d => d.color);
+
+      legendSvg.append("rect")
+        .attr("width", legendWidth)
+        .attr("height", legendHeight)
+        .style("fill", "url(#linear-gradient)");
+
+      legendSvg.append("g")
+        .attr("transform", `translate(0,${legendHeight})`)
+        .call(legendAxis);
+    }
+
+    drawHeatmap1(fullData1, "heatmapContainer", regions);
+
+    function drawSmallMultiplesGrouped(data, containerId, regionsToDisplay = null) {
+      const container = d3.select(`#${containerId}`);
+      container.html(""); // Clear previous content
+
+      // Filtrage des régions si précisé
+      const regions = Array.from(
+        new Set(data.map(d => d.region))
+      ).filter(r => !regionsToDisplay || regionsToDisplay.includes(r));
+
+      //const keys = ["Both sexes", "Female", "Male"];
+      const keys = Array.from(new Set(data.map(d => d.sex)));
+
+      const margin = { top: 30, right: 20, bottom: 40, left: 40 };
+      const width = 280;
+      const height = 200;
+
+      const maxY = d3.max(data, d => d.value) * 1.1;
+
+      const color = d3.scaleOrdinal()
+        .domain(keys)
+        .range(["#66c2a5", "#fc8d62", "#8da0cb"]);
+
+      // Container grid
+      const chartsWrapper = container.append("div")
+        .attr("class", "chart-container");
+
+      regions.forEach(region => {
+        const regionData = data.filter(d => d.region === region);
+        const valuesMap = new Map(regionData.map(d => [d.sex, d.value]));
+
+        const svg = chartsWrapper.append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+        const g = svg.append("g")
+          .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const x0 = d3.scaleBand()
+          .domain([region])
+          .range([0, width - margin.left - margin.right])
+          .padding(0.2);
+
+        const x1 = d3.scaleBand()
+          .domain(keys)
+          .range([0, x0.bandwidth()])
+          .padding(0.05);
+
+        const y = d3.scaleLinear()
+          .domain([0, maxY])
+          .range([height - margin.top - margin.bottom, 0]);
+
+        g.selectAll("g")
+          .data([region])
+          .join("g")
+            .attr("transform", d => `translate(${x0(d)},0)`)
+          .selectAll("rect")
+          .data(() => keys.map(k => ({ key: k, value: valuesMap.get(k) || 0 })))
+          .join("rect")
+            .attr("x", d => x1(d.key))
+            .attr("y", d => y(d.value))
+            .attr("width", x1.bandwidth())
+            .attr("height", d => y(0) - y(d.value))
+            .attr("fill", d => color(d.key))
+            .append("title")
+              .text(d => `${region} - ${d.key}: ${d3.format(".2f")(d.value)}`);
+
+        g.append("g").call(d3.axisLeft(y).ticks(4));
+
+        svg.append("text")
+          .attr("x", width / 2)
+          .attr("y", 20)
+          .attr("text-anchor", "middle")
+          .style("font-weight", "bold")
+          .text(region);
+      });
+
+      // ✅ Légende
+      const legendSvg = container.append("svg")
+        .attr("width", 300)
+        .attr("height", 40)
+        .style("margin-top", "20px");
+
+      const legendGroup = legendSvg.append("g").attr("transform", "translate(10,10)");
+
+      keys.forEach((key, i) => {
+        const g = legendGroup.append("g").attr("transform", `translate(${i * 100},0)`);
+        g.append("rect").attr("width", 18).attr("height", 18).attr("fill", color(key));
+        g.append("text").attr("x", 24).attr("y", 14).text(key).style("font-size", "14px");
+      });
+    }
+
+    const qqqq = {{ qqqq|safe }};
+
+    drawSmallMultiplesGrouped(qqqq, "small-multiples", regions);
+
+    });
+</script>
+{% endblock %}

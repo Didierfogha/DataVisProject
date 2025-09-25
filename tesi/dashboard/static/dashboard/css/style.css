@@ -1,0 +1,23 @@
+body {
+    background: #f9f9f9;
+}
+
+.chart-container {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.dashboard-header {
+    background: #343a40;
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+}

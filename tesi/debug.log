@@ -1,0 +1,336 @@
+[08/Sep/2025 01:02:32] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[08/Sep/2025 01:02:36] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:02:36] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[08/Sep/2025 01:03:40] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:03:40] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[08/Sep/2025 01:03:56] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[08/Sep/2025 01:03:59] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:03:59] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[08/Sep/2025 01:04:08] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:04:08] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[08/Sep/2025 01:05:57] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[08/Sep/2025 01:06:00] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:06:00] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[08/Sep/2025 01:06:47] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[08/Sep/2025 01:07:31] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[08/Sep/2025 01:07:33] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:07:33] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[08/Sep/2025 01:12:33] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:12:33] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[08/Sep/2025 01:17:30] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[08/Sep/2025 01:17:37] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:17:37] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[08/Sep/2025 01:18:10] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[08/Sep/2025 01:18:10] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[09/Sep/2025 20:59:39] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[09/Sep/2025 21:00:49] WARNING [django.request:222] Not Found: /favicon.ico
+[09/Sep/2025 21:00:49] WARNING [django.server:157] "GET /favicon.ico HTTP/1.1" 404 2208
+[11/Sep/2025 11:25:35] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:27:18] WARNING [django.request:222] Not Found: /favicon.ico
+[11/Sep/2025 11:27:18] WARNING [django.server:157] "GET /favicon.ico HTTP/1.1" 404 2208
+[11/Sep/2025 11:29:18] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:36:05] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:37:36] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:38:50] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:42:57] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:45:35] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:50:01] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 11:50:01] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 11:52:09] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:52:15] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 11:52:15] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 11:54:07] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:54:46] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 11:54:46] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 11:56:42] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:56:47] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 11:56:47] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 11:59:39] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 11:59:50] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 11:59:50] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:03:45] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 12:05:32] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 12:06:08] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:06:08] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:07:57] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 12:08:04] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:08:04] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:11:41] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 12:16:24] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 12:17:06] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 12:22:49] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:22:49] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:25:28] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 12:25:39] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:25:39] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:38:17] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:38:17] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:39:40] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:39:40] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:39:49] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:39:49] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:40:59] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:40:59] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:41:24] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:41:24] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:42:02] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:42:02] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:42:31] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:42:31] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:45:45] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:45:45] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:46:41] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:46:41] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 12:57:17] DEBUG [django.db.backends:125] (0.015) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 12:57:47] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 12:57:47] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:00:52] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 13:00:57] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:00:57] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:01:27] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:01:27] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:09:06] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 13:09:49] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:09:49] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:24:17] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:24:17] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:24:50] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:24:50] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:25:55] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:25:55] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:26:04] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:26:04] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:32:33] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 13:41:10] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:41:10] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 13:43:01] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 13:43:01] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 14:52:02] DEBUG [django.db.backends:125] (0.016) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 14:52:12] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 14:52:12] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 14:56:00] DEBUG [django.db.backends:125] (0.016) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 14:56:03] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 14:56:03] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 14:57:25] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 14:57:47] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 14:57:47] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:02:00] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 15:02:08] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:02:08] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:03:54] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:03:54] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:13:45] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 15:26:40] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 15:30:38] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 15:38:56] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 15:39:05] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:39:05] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:40:29] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:40:29] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:43:18] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:43:18] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:48:37] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[11/Sep/2025 15:48:43] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:48:43] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:50:35] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:50:35] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:51:42] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:51:42] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:53:03] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:53:03] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:55:55] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:55:55] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:57:20] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:57:20] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[11/Sep/2025 15:57:44] WARNING [django.request:222] Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[11/Sep/2025 15:57:44] WARNING [django.server:157] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2319
+[24/Sep/2025 15:39:15] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Sep/2025 15:39:51] WARNING [django.request:222] Not Found: /
+[24/Sep/2025 15:39:51] WARNING [django.server:157] "GET / HTTP/1.1" 404 2157
+[24/Sep/2025 15:39:55] WARNING [django.request:222] Not Found: /favicon.ico
+[24/Sep/2025 15:39:55] WARNING [django.server:157] "GET /favicon.ico HTTP/1.1" 404 2208
+[24/Sep/2025 16:10:38] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Sep/2025 16:11:19] WARNING [django.request:222] Not Found: /favicon.ico
+[24/Sep/2025 16:11:19] WARNING [django.server:157] "GET /favicon.ico HTTP/1.1" 404 2208
+[24/Sep/2025 16:17:15] DEBUG [django.db.backends:125] (0.031) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Sep/2025 16:21:36] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Sep/2025 16:27:48] DEBUG [django.db.backends:125] (0.016) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Sep/2025 16:45:27] DEBUG [django.db.backends:125] (0.015) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Sep/2025 16:46:03] WARNING [django.request:222] Not Found: /favicon.ico
+[24/Sep/2025 16:46:03] WARNING [django.server:157] "GET /favicon.ico HTTP/1.1" 404 2208
+[24/Sep/2025 20:15:10] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Sep/2025 20:15:15] WARNING [django.request:222] Not Found: /
+[24/Sep/2025 20:15:15] WARNING [django.server:157] "GET / HTTP/1.1" 404 2033
+[24/Sep/2025 20:15:16] WARNING [django.request:222] Not Found: /favicon.ico
+[24/Sep/2025 20:15:16] WARNING [django.server:157] "GET /favicon.ico HTTP/1.1" 404 2084
+[24/Sep/2025 20:16:21] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Sep/2025 20:16:22] WARNING [django.request:222] Not Found: /
+[24/Sep/2025 20:16:22] WARNING [django.server:157] "GET / HTTP/1.1" 404 2033
+[24/Sep/2025 20:16:22] WARNING [django.request:222] Not Found: /favicon.ico
+[24/Sep/2025 20:16:22] WARNING [django.server:157] "GET /favicon.ico HTTP/1.1" 404 2084
+[25/Sep/2025 10:27:15] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[25/Sep/2025 10:27:18] WARNING [django.request:222] Not Found: /
+[25/Sep/2025 10:27:18] WARNING [django.server:157] "GET / HTTP/1.1" 404 2033
+[25/Sep/2025 11:32:06] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[25/Sep/2025 11:32:17] WARNING [django.request:222] Not Found: /
+[25/Sep/2025 11:32:17] WARNING [django.server:157] "GET / HTTP/1.1" 404 2033
+[25/Sep/2025 14:40:22] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[25/Sep/2025 14:40:24] WARNING [django.request:222] Not Found: /
+[25/Sep/2025 14:40:24] WARNING [django.server:157] "GET / HTTP/1.1" 404 2033
+[25/Sep/2025 14:42:02] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[25/Sep/2025 14:42:48] DEBUG [django.db.backends:125] (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[25/Sep/2025 14:42:49] WARNING [django.request:222] Not Found: /
+[25/Sep/2025 14:42:49] WARNING [django.server:157] "GET / HTTP/1.1" 404 2033

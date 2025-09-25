@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+
+
+    <!-- Plot CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.15/dist/plot.min.css"> -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <div class="dashboard-header text-center">
+        <h1>🌍 Dashboard - Life expectancy at birth by region (continent)</h1>
+        <h1>Introduzione</h1>
+        <h4>
+            Obiettivo: mostrare come l'aspettativa di vita varia a seconda della regione, concentrandosi sull'Africa e comprendendo le disparità di questa aspettativa rispetto alle altre regioni nel dataset.
+            L'importanza di mostrare l'evoluzione e comprendere le disparità nell'aspettativa di vita tra Africa e le altre regioni risiede in: salute pubblica, disuguaglianze e politiche di sviluppo.
+            Contesto:
+            - L'aspettativa di vita è un indicatore chiave dello sviluppo.
+            Metodologia: Utilizzo di visualizzazioni interattive per facilitare la comprensione:
+            - Set di dati (Excel fornito dall'OMS o equivalente).
+            - Strumenti utilizzati: Python (preparazione dei dati), D3.js (visualizzazione), Django (integrazione web).
+            - Notiamo che l'Africa, nonostante i rapidi progressi, rimane al di sotto della media globale.
+            Promessa:
+            Attraverso una serie di visualizzazioni interattive, vedremmo prima il panorama globale, poi uno zoom sull’Africa.
+        </h4>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.15/dist/plot.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>
